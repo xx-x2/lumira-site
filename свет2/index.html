@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIRA — Премиальное освещение</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<div class="logo">LUMIRA</div>
+<nav>
+<a href="#about">О бренде</a>
+<a href="#catalog">Ассортимент</a>
+<a href="#contacts">Контакты</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Дизайнерское освещение премиум-класса</h1>
+<p>Создаём атмосферу через свет. Подвесные светильники, торшеры и бра для современных интерьеров в Алматы.</p>
+<button class="btn" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Смотреть ассортимент</button>
+<button class="btn">Получить консультацию</button>
+</div>
+</section>
+
+<section id="about">
+<h2 class="section-title">Философия бренда</h2>
+<p class="about-text">
+Мы отбираем коллекции, сочетающие минимализм, качество материалов и актуальные тенденции дизайна. 
+Работаем с частными клиентами, архитекторами и студиями интерьера, помогая создавать гармоничные пространства через свет.
+</p>
+
+<div class="features">
+<div class="feature">
+<h3>Европейские фабрики</h3>
+<p>Прямые поставки от производителей</p>
+</div>
+<div class="feature">
+<h3>Гарантия 3 года</h3>
+<p>Качество, подтверждённое временем</p>
+</div>
+<div class="feature">
+<h3>Персональный подбор</h3>
+<p>Поможем выбрать свет под ваш проект</p>
+</div>
+</div>
+</section>
+
+<section id="catalog">
+<h2 class="section-title">Ассортимент</h2>
+<div class="catalog" id="products">
+<!-- JS сгенерирует 500 карточек здесь -->
+</div>
+</section>
+
+<section class="cta" id="contacts">
+<h2>Подберём освещение для вашего проекта</h2>
+<p>Свяжитесь с нами для персональной консультации</p>
+<button class="btn">WhatsApp</button>
+<button class="btn">Позвонить</button>
+</section>
+
+<footer>
+© 2026 LUMIRA — Премиальное освещение в Алматы
+</footer>
+
+<script>
+// Генерация 500 товаров
+const products = [];
+for(let i=1; i<=500; i++){
+    products.push({
+        name: `Лампа ${i}`,
+        img: `https://picsum.photos/500/300?random=${i}`,
+        price: `${Math.floor(Math.random()*50000+10000)} ₸`
+    });
+}
+
+const container = document.getElementById('products');
+products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product';
+    card.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <h3>${p.name}</h3>
+        <div class="price">${p.price}</div>
+        <button class="btn">Запросить информацию</button>
+    `;
+    container.appendChild(card);
+});
+</script>
+
+</body>
+</html>
